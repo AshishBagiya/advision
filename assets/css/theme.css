@@ -281,4 +281,71 @@ section {
   --color-muted: #94a3b8;
 }
 
+/* Forms */
+.form {
+  display: grid;
+  gap: 18px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.input, .textarea, select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: var(--color-text);
+  border-radius: 12px;
+  transition: border-color 0.15s ease, box-shadow 0.2s ease;
+}
+
+.input:focus, .textarea:focus, select:focus {
+  outline: none;
+  border-color: rgba(11, 92, 255, 0.6);
+  box-shadow: 0 0 0 4px rgba(11, 92, 255, 0.12);
+}
+
+.input-wrap {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-muted);
+}
+
+.input.has-icon {
+  padding-left: 40px;
+}
+
+.helper {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.alert-success {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  padding: 12px 14px;
+  border-radius: 12px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
 

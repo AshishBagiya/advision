@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact — FinServe</title>
+  <title>Contact — AdVision</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.svg" sizes="32x32">
   <link rel="stylesheet" href="assets/css/theme.css" />
   <script src="assets/js/include.js" defer></script>
 </head>
@@ -18,21 +19,72 @@
   </section>
 
   <section>
-    <div class="container two-col">
+    <div class="container">
       <div class="card">
-        <h3>Talk to an advisor</h3>
-        <p class="muted">Email us and we will respond within one business day.</p>
-        <a class="btn btn-primary" href="mailto:contact@finserve.com">contact@finserve.com</a>
-      </div>
-      <div class="card">
-        <h3>Office</h3>
-        <p class="muted">201, Crescent Plaza, Mumbai, IN</p>
-        <p class="muted">+91 98765 43210</p>
+        <h3 style="margin-bottom:6px;">Request a callback</h3>
+        <p class="muted">Share your details and we’ll reach out within one business day.</p>
+        <form id="contactForm" class="form" novalidate>
+          <div class="two-col">
+            <div class="field">
+              <label class="label" for="fullName">Full Name</label>
+              <div class="input-wrap">
+                <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-4.418 0-8 2.239-8 5v1h16v-1c0-2.761-3.582-5-8-5z"/></svg>
+                <input class="input has-icon" id="fullName" name="fullName" type="text" required placeholder="Your name" />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label" for="email">Email</label>
+              <div class="input-wrap">
+                <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 4h20v16H2V4zm2 2v.511l8 5.333 8-5.333V6H4zm16 12V9.156l-8 5.334-8-5.334V18h16z"/></svg>
+                <input class="input has-icon" id="email" name="email" type="email" required placeholder="you@example.com" />
+              </div>
+              <!-- <small class="helper">We’ll only use this to contact you back.</small> -->
+            </div>
+          </div>
+          <div class="two-col">
+            <div class="field">
+              <label class="label" for="phone">Phone</label>
+              <div class="input-wrap">
+                <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.05-.24c1.14.38 2.37.59 3.54.59a1 1 0 011 1V20a1 1 0 01-1 1C10.3 21 3 13.7 3 4a1 1 0 011-1h3.47a1 1 0 011 1c0 1.17.2 2.4.59 3.54a1 1 0 01-.25 1.05l-2.19 2.2z"/></svg>
+                <input class="input has-icon" id="phone" name="phone" type="tel" required placeholder="+91 ..." pattern="[+0-9\s-]{7,}" />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label" for="subject">Subject</label>
+              <input class="input" id="subject" name="subject" type="text" required placeholder="e.g., Wealth planning" />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="message">Message</label>
+            <textarea class="textarea" id="message" name="message" rows="6" required placeholder="How can we help?"></textarea>
+          </div>
+          <div class="actions">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <small class="helper">By submitting, you agree to our privacy policy.</small>
+          </div>
+          <p id="formStatus" class="alert-success" style="display:none; margin:0;"></p>
+        </form>
       </div>
     </div>
   </section>
 
   <div data-include="partials/footer.html"></div>
+  <script>
+    (function() {
+      var form = document.getElementById('contactForm');
+      var status = document.getElementById('formStatus');
+      if (!form) return;
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        var data = new FormData(form);
+        // Simulate submit success; integrate backend or form service later
+        status.textContent = 'Thanks ' + (data.get('fullName') || '') + '! Your request has been received.';
+        status.style.display = 'block';
+        form.reset();
+      });
+    })();
+  </script>
 </body>
 </html>
 
